@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Invoice Creator</h1>
+        <form id="invoiceForm">
+            <div class="form-group">
+                <label for="invoiceNumber">Invoice Number:</label>
+                <input type="text" id="invoiceNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="from">From:</label>
+                <input type="text" id="from" required>
+            </div>
+            <div class="form-group">
+                <label for="fromAddress">From Address:</label>
+                <textarea id="fromAddress" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="fromEmail">From Email:</label>
+                <input type="email" id="fromEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="billTo">Bill To:</label>
+                <input type="text" id="billTo" required>
+            </div>
+            <div class="form-group">
+                <label for="billToAddress">Bill To Address:</label>
+                <textarea id="billToAddress" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="billToEmail">Bill To Email:</label>
+                <input type="email" id="billToEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="billDate">Bill Date:</label>
+                <div class="date-input-container">
+                    <input type="date" id="billDate" required>
+                    <svg class="calendar-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dueDate">Due Date:</label>
+                <div class="date-input-container">
+                    <input type="date" id="dueDate" required>
+                    <svg class="calendar-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                    </svg>
+                </div>
+            </div>
+            <h2>Items</h2>
+            <div id="itemsContainer">
+                <div class="item-row">
+                    <input type="text" class="item-description" placeholder="Item description" required>
+                    <input type="number" class="item-quantity" placeholder="Qty" required>
+                    <input type="number" class="item-price" placeholder="Price" step="0.01" required>
+                    <span class="item-total">$0.00</span>
+                    <button type="button" class="remove-item">Remove</button>
+                </div>
+            </div>
+            <button type="button" id="addItem" class="btn secondary">Add Item</button>
+            <div class="total-section">
+                <span>Total: $<span id="invoiceTotal">0.00</span></span>
+            </div>
+            <div class="form-group">
+                <label for="memo">Memo / Special Instructions:</label>
+                <textarea id="memo" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn primary">Generate Invoice</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
